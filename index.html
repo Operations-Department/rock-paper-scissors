@@ -10,7 +10,19 @@
 
 
     <script>
-    
+        const options = ["Rock", "Paper", "Scissors"];
+        const randomElement = options[Math.floor(Math.random() * options.length)];
+
+        function getComputerChoice() {
+            return randomElement;
+        }
+
+        const playerSelection = prompt("Select humanity's fate", "Rock, Paper, Scissors");
+        const computerSelection = getComputerChoice();
+
+        function playRound(playerSelection, computerSelection) {
+            
+        }
 
         
     </script>
