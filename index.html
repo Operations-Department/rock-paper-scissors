@@ -10,21 +10,100 @@
 
 
     <script>
-        const options = ["Rock", "Paper", "Scissors"];
-        const randomElement = options[Math.floor(Math.random() * options.length)];
 
-        function getComputerChoice() {
-            return randomElement;
+
+    // Game options
+    const options = ["Rock", "Paper", "Scissors"];
+
+    //Picks a random one of the ^ options array
+    const randomElement = options[Math.floor(Math.random() * options.length)];
+    const anotherRandomElement = options[Math.floor(Math.random() * options.length)];
+
+    //Function for computer to select randomly
+    function getComputerChoice() {
+        return randomElement;
+    }
+
+    //Another random selector function, used as a test
+    /*function getPlayerChoice() {
+        return anotherRandomElement;
+    }*/
+
+    //To get user input - commented out avoid and extra prompt
+    /*const playerInput = prompt("Pick carefully");*/
+
+    //To make user input case-insensitive
+    function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+    }
+
+    //Computer selects randomly, user enters manually
+    const playerSelection = capitalizeFirstLetter(playerInput);
+    const computerSelection = getComputerChoice();
+
+    //Starting score
+    let computerScore = 0;
+    let playerScore = 0;
+
+    //One round of rock paper scissors, winner gets +1 points
+    function playRound(playerSelection, computerSelection) {
+        switch (true) {
+            case playerSelection === "Rock" && computerSelection === "Rock":
+                return "It's a draw";
+            case playerSelection === "Rock" && computerSelection === "Paper":
+                computerScore += 1;
+                return "Loss, paper beats rock";
+            case playerSelection === "Rock" && computerSelection === "Scissors":
+                playerScore += 1;
+                return "Win, rock beats scissors";
+            case playerSelection === "Paper" && computerSelection === "Paper":
+                return "It's a draw";
+            case playerSelection === "Paper" && computerSelection === "Scissors":
+                computerScore += 1;
+                return "Loss, scissors beats rock";
+            case playerSelection === "Paper" && computerSelection === "Rock":
+                playerScore += 1;
+                return "Win, paper beats rock";
+            case playerSelection === "Scissors" && computerSelection === "Scissors":
+                return "It's a draw";
+            case playerSelection === "Scissors" && computerSelection === "Rock":
+                computerScore += 1;
+                return "Loss, rock beats scissors";
+            case playerSelection === "Scissors" && computerSelection === "Paper":
+                playerScore += 1;
+                return "Win, scissors beats paper";
+            default:
+                return "Watch out for typos; 'Rock', 'Paper', or 'Scissors'..";
+        }   
+    }
+
+    //A full 5 round game
+    function game(playRound) {
+        for (let i = 0; i < 5; i++) {
+            const playerInput = prompt("Pick carefully");
+            const playerSelection = capitalizeFirstLetter(playerInput);
+            const computerSelection = getComputerChoice();
+            playRound(playerSelection, computerSelection);
+
+            //Alert the score after each round
+            alert(`Round ${i+1} \nPlayer Score: ${playerScore} \nComputer Score: ${computerScore}`);
         }
 
-        const playerSelection = prompt("Select humanity's fate", "Rock, Paper, Scissors");
-        const computerSelection = getComputerChoice();
+        //Final score output
+        if (computerScore > playerScore) {
+            return `Computer Wins! \nPlayer Score: ${playerScore}. \nComputer Score: ${computerScore}.`;
+            } else if (playerScore > computerScore) {
+                return `Player Wins! \nPlayer Score: ${playerScore}. \nComputer Score: ${computerScore}.`;
+            } else if (playerScore === computerScore) {
+                return `Tie..! \nPlayer Score: ${playerScore}. \nComputer Score: ${computerScore}.`;
+            } else {
+                return "Something went terribly wrong";
+            }
+    }
 
-        function playRound(playerSelection, computerSelection) {
-            
-        }
+    console.log(game(playRound));
 
-        
+
     </script>
     
 </body>
