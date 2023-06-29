@@ -1,0 +1,45 @@
+body {
+	background-color: #424242;
+	color: #FAFAFA;
+	font-family: Roboto, sans-serif;;
+}
+
+.button-clicked {
+  background-color: #B0BEC5;
+}
+
+.mouseover {
+	transform: translateY(-3px);
+}
+
+#header {
+	background: #BF360C;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 300px;
+}
+
+#buttons {
+	background: #F8BBD0;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	padding: none;
+	
+}
+
+#results {
+	background: #004D40;
+	display: flex;
+	justify-content: center;
+	gap: 10px; 
+}
+
+#outcome {
+	background: #4A148C;
+	display: flex;
+	justify-content: center;
+}
