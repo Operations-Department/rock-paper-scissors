@@ -4,159 +4,181 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RPS</title>
-    <link rel="stylesheet" type="text/css" href="style.css0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>RPS Game</title>
+    
 </head>
 <body>
-
-    <div id="header">RPS</div>
+    <div id="header">
+        <h1>ROCK PAPER SCISSORS</h1>
+    </div>
+    <div id="instructions">
+        <h3>First to 5 wins!</h3>
+    </div>
     <div id="buttons">
-	    <button id="rock">✊</button>
-	    <button id="paper">🖐</button>
-	    <button id="scissors">✌</button>
+        <button id="rock">✊</button>
+        <button id="paper">🖐</button>
+        <button id="scissors">✌</button>
     </div>
     <div id="results">
-        <div id="player-score">You: 0</div>
-        <div id="comp-score">Computer: 0</div>
+        <div id="player-selected"></div>
+        <div id="player-score">💪: 0</div>
+        <div id="comp-score">🦾: 0</div>
+        <div id="computer-selected"></div>
     </div>
     <div id="outcome"></div>
-
-
+    <div id="footer">
+        <p>Copyright &copy 2023 Operations-Department</p>
+    </div>
 
     
     <script>
+    const rock = document.getElementById('rock');
+    const paper = document.getElementById('paper');
+    const scissors = document.getElementById('scissors');
+    const playerScore = document.getElementById('player-score');
+    const compScore = document.getElementById('comp-score');
+    const outcome = document.getElementById('outcome');
+    const playerSelected = document.getElementById('player-selected');
+    const computerSelected = document.getElementById('computer-selected');
 
-        const rock = document.getElementById('rock');
-        const paper = document.getElementById('paper');
-        const scissors = document.getElementById('scissors');
-        const playerScore = document.getElementById('player-score');
-        const compScore = document.getElementById('comp-score');
-        const outcome = document.getElementById('outcome');
+    const options = ['Rock', 'Paper', 'Scissors'];
 
-        const options = ['Rock', 'Paper', 'Scissors'];
+    function getComputerChoice() { 
+    const randomSelection = Math.floor(Math.random() * options.length);
+    return options[randomSelection];
+    };
 
-        function getComputerChoice() { 
-        const randomSelection = Math.floor(Math.random() * options.length);
-        return options[randomSelection];
-        };
-
-        rock.addEventListener('mouseover', function() {
-            rock.classList.add('mouseover');
-        });
-        rock.addEventListener('mouseout', function() {
-            rock.classList.remove('mouseover');
-        });
-        rock.addEventListener('click', function() {
+    rock.addEventListener('mouseover', function() {
+        rock.classList.add('mouseover');
+    });
+    rock.addEventListener('mouseout', function() {
+        rock.classList.remove('mouseover');
+    });
+    rock.addEventListener('click', function() {
         rock.classList.add('button-clicked');
-        setTimeout(function () {
-            rock.classList.remove('button-clicked');
-        }, 35);
-            game(playRound("Rock", getComputerChoice()));
-        });
+            setTimeout(function () {
+                rock.classList.remove('button-clicked');
+            }, 35);
+        game(playRound("Rock", getComputerChoice()));
+    });
 
-        paper.addEventListener('mouseover', function() {
-            paper.classList.add('mouseover');
-        });
-        paper.addEventListener('mouseout', function() {
-            paper.classList.remove('mouseover');
-        });
-        paper.addEventListener('click', function() {
+    paper.addEventListener('mouseover', function() {
+        paper.classList.add('mouseover');
+    });
+    paper.addEventListener('mouseout', function() {
+        paper.classList.remove('mouseover');
+    });
+    paper.addEventListener('click', function() {
         paper.classList.add('button-clicked');
-        setTimeout(function () {
-            paper.classList.remove('button-clicked');
-        }, 35);
-            game(playRound("Rock", getComputerChoice()));
-        });
+            setTimeout(function () {
+                paper.classList.remove('button-clicked');
+            }, 35);
+        game(playRound("Paper", getComputerChoice()));
+    });
 
-        scissors.addEventListener('mouseover', function() {
-            scissors.classList.add('mouseover');
-        });
-        scissors.addEventListener('mouseout', function() {
-            scissors.classList.remove('mouseover');
-        });
-        scissors.addEventListener('click', function() {
+    scissors.addEventListener('mouseover', function() {
+        scissors.classList.add('mouseover');
+    });
+    scissors.addEventListener('mouseout', function() {
+        scissors.classList.remove('mouseover');
+    });
+    scissors.addEventListener('click', function() {
         scissors.classList.add('button-clicked');
-        setTimeout(function () {
-            scissors.classList.remove('button-clicked');
-        }, 35);
-            game(playRound("Rock", getComputerChoice()));
-        });
+    setTimeout(function () {
+        scissors.classList.remove('button-clicked');
+    }, 35);
+    game(playRound("Scissors", getComputerChoice()));
+    });
 
-        let compTempScore = 0;
-        let playerTempScore = 0;
+    let compTempScore = 0;
+    let playerTempScore = 0;
 
-        function playRound(playerChoice, computerChoice) {
-            switch (playerChoice) {
-                case "Rock":
-                    if (computerChoice === 'Paper') {
-                        compTempScore++;
-                        compScore.textContent = `Computer: ${compTempScore}`;
-                        outcome.textContent = "Loss! Rock is covered by paper..";
-                        break;
-                        } else if (computerChoice === 'Scissors') {
-                        playerTempScore++;
-                        playerScore.textContent = `Player: ${playerTempScore}`;
-                        outcome.textContent = "Win! Rock smashes scissors!";
-                        break;
-                        } else {
-                        outcome.textContent = "Tie with rock";
-                        break;
-                        }
-                case "Paper":
-                    if (computerChoice === 'Scissors') {
-                        compTempScore++;
-                        compScore.textContent = `Computer: ${compTempScore}`;
-                        outcome.textContent = "Loss! Paper is cut by scissors..";
-                        break;
-                    } else if (computerChoice === 'Rock') {
-                        playerTempScore++;
-                        playerScore.textContent = `Player: ${playerTempScore}`;
-                        outcome.textContent = "Win! Paper covers rock!";
-                        break;
-                    } else {
-                        outcome.textContent = "Tie with paper";
-                        break;
-                        }
-                case "Scissors":
-                    if (computerChoice === 'Rock') {
-                        compTempScore++;
-                        compScore.textContent = `Computer: ${compTempScore}`;
-                        outcome.textContent = "Loss! Scissors are smashed by rock..";
-                        break;
-                    } else if (computerChoice === 'Paper') {
-                        playerTempScore++;
-                        playerScore.textContent = `Player: ${playerTempScore}`;
-                        outcome.textContent = "Win! Scissors cut paper!";
-                        break;
-                    } else {
-                        outcome.textContent = "Tie with scissors";
-                        break;
-                    }
-
-                default:
-                    return "error";
-            }
-        };
-
-        function game() {
-            if (playerTempScore === 5) {
-                outcome.textContent = `Game! You win ${playerTempScore} - ${compTempScore}!`;
-                playerTempScore = 0;
-                playerScore.textContent = "Player: 0";
-                compTempScore = 0;
-                compScore.textContent = "Computer: 0";
-            } else if (compTempScore === 5) {
-                outcome.textContent = `Game! Computer wins ${compTempScore} - ${playerTempScore}!`;
-                playerTempScore = 0;
-                playerScore.textContent = "Player: 0";
-                compTempScore = 0;
-                compScore.textContent = "Computer: 0";
+    function playRound(playerChoice, computerChoice) {
+    switch (playerChoice) {
+        case "Rock":
+            playerSelected.textContent = "✊";
+            if (computerChoice === 'Paper') {
+                computerSelected.textContent = "🖐";
+                compTempScore++;
+                compScore.textContent = `🦾: ${compTempScore}`;
+                outcome.textContent = "Loss! Rock is covered by paper..";
+                break;
+            } else if (computerChoice === 'Scissors') {
+                computerSelected.textContent = "✌";
+                playerTempScore++;
+                playerScore.textContent = `💪: ${playerTempScore}`;
+                outcome.textContent = "Win! Rock smashes scissors!";
+                break;
             } else {
-                return "error";
+                computerSelected.textContent = "✊";
+                outcome.textContent = "Tie with rock";
+                break;
             }
-        };
+        case "Paper":
+            playerSelected.textContent = "🖐";
+            if (computerChoice === 'Scissors') {
+                computerSelected.textContent = "✌";
+                compTempScore++;
+                compScore.textContent = `🦾: ${compTempScore}`;
+                outcome.textContent = "Loss! Paper is cut by scissors..";
+                break;
+            } else if (computerChoice === 'Rock') {
+                computerSelected.textContent = "✊";
+                playerTempScore++;
+                playerScore.textContent = `💪: ${playerTempScore}`;
+                outcome.textContent = "Win! Paper covers rock!";
+                break;
+            } else {
+                computerSelected.textContent = "🖐";
+                outcome.textContent = "Tie with paper";
+                break;
+            }
+        case "Scissors":
+            playerSelected.textContent = "✌";
+            if (computerChoice === 'Rock') {
+                computerSelected.textContent = "✊";
+                compTempScore++;
+                compScore.textContent = `🦾: ${compTempScore}`;
+                outcome.textContent = "Loss! Scissors are smashed by rock..";
+                break;
+            } else if (computerChoice === 'Paper') {
+                computerSelected.textContent = "🖐";
+                playerTempScore++;
+                playerScore.textContent = `💪: ${playerTempScore}`;
+                outcome.textContent = "Win! Scissors cut paper!";
+                break;
+            } else {
+                computerSelected.textContent = "✌";
+                outcome.textContent = "Tie with scissors";
+                break;
+            }
+        default:
+            return "error";
+    }
+    };
 
-
+    function game() {
+    if (playerTempScore === 5) {
+        outcome.textContent = `Game! You win ${playerTempScore} - ${compTempScore}!`;
+        playerTempScore = 0;
+        playerScore.textContent = "💪: 0";
+        playerSelected.textContent = "👑";
+        compTempScore = 0;
+        compScore.textContent = "🦾: 0";
+        computerSelected.textContent = "🏳️";
+    } else if (compTempScore === 5) {
+        outcome.textContent = `Game! Computer wins ${compTempScore} - ${playerTempScore}!`;
+        playerTempScore = 0;
+        playerScore.textContent = "💪: 0";
+        playerSelected.textContent = "🤡";
+        compTempScore = 0;
+        compScore.textContent = "🦾: 0";
+        computerSelected.textContent = "👑";
+    } else {
+        return "error";
+    }
+    };
     </script>
 
 </body>

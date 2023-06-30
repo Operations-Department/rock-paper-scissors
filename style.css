@@ -1,45 +1,78 @@
 body {
-	background-color: #424242;
+	background-color: #37474F;
+	/*background-image: url("pics/background.jpg");
+	background-size: cover;*/
 	color: #FAFAFA;
 	font-family: Roboto, sans-serif;;
+	font-size: 75px;
+}
+
+div {
+	//border: 3px solid red;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1 {
+	//border: 3px solid blue;
+	font-size: 55px;
+	color: #FBC02D;
+	//-webkit-text-stroke: 2px #DD2C00;
+}
+
+h3 {
+	//border: 3px solid green;
+	font-size: xx-large;
+	margin: 0;
 }
 
 .button-clicked {
-  background-color: #B0BEC5;
+  background-color: #424242;
 }
 
 .mouseover {
-	transform: translateY(-3px);
+	transform: translateY(-10px);
+	box-shadow: 10px 0px 25px;
+	cursor: pointer;
+}
+
+#instructions {
+	height: 75px;
 }
 
 #header {
-	background: #BF360C;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 20px 300px;
+	background-color: #263238;
 }
 
 #buttons {
-	background: #F8BBD0;
-	height: 400px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 8px;
+	height: 275px;
+	gap: 75px;
 	padding: none;
-	
+}
+
+button {
+	background-color: rgba(0, 0, 0, 0.01);
+	border: 5px solid black;
+	border-radius: 35px;
+	font-size: 110px;
+	width: 175px;
+	height: 175px;
+	box-shadow: 10px 10px 25px;
+	transform: rotate(-90deg);
 }
 
 #results {
-	background: #004D40;
-	display: flex;
-	justify-content: center;
-	gap: 10px; 
+	gap: 80px; 
 }
 
 #outcome {
-	background: #4A148C;
-	display: flex;
-	justify-content: center;
+	font-size: 35px;
+	padding: 20px;
+	height: 75px;
+}
+
+#footer {
+	background-color: #263238;
+	font-size: medium;
 }
