@@ -8,7 +8,7 @@ body {
 }
 
 div {
-	//border: 3px solid red;
+	border: 3px solid red;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -72,7 +72,15 @@ button {
 	height: 75px;
 }
 
+#bottom {
+	position: relative;
+	height: 23vh;
+}
+
 #footer {
 	background-color: #263238;
 	font-size: medium;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 }
