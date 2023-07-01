@@ -71,16 +71,3 @@ button {
 	padding: 20px;
 	height: 75px;
 }
-
-#bottom {
-	position: relative;
-	height: 23vh;
-}
-
-#footer {
-	background-color: #263238;
-	font-size: medium;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-}
